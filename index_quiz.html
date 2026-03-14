@@ -25,15 +25,23 @@ flex-direction:column;
 align-items:center;
 }
 
+#choices{
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-bottom:5px;
+}
+
 canvas{
 border:1px solid #aaa;
 }
 
 button{
-margin:6px;
-padding:6px 12px;
-font-size:14px;
-width:170px;
+margin:6px 0;
+padding:12px 12px;
+font-size:18px;
+width:220px;
+cursor:pointer;
 }
 
 #result{
@@ -47,7 +55,6 @@ font-weight:bold;
 
 <body>
 
-<h2>雨温図クイズ</h2>
 
 <div id="container">
 
@@ -56,6 +63,7 @@ font-weight:bold;
 </div>
 
 <div id="right">
+雨温図クイズ
 <div id="choices"></div>
 <div id="result"></div>
 <button onclick="nextQuestion()">更新</button>
@@ -191,15 +199,19 @@ datasets:[
 {
 type:"bar",
 data:point.rain,
-backgroundColor:"skyblue",
-yAxisID:"rain"
+backgroundColor:"rgba(135,206,235,0.5)"
+yAxisID:"rain",
+order:1
 },
 
 {
 type:"line",
 data:point.temp,
 borderColor:"red",
-yAxisID:"temp"
+yAxisID:"temp",
+order:2,
+borderWidth:2,
+pointRadius:3
 }
 
 ]
@@ -243,14 +255,18 @@ chart.data.datasets.push({
 type:"bar",
 data:point.rain,
 backgroundColor:"pink",
-yAxisID:"rain"
+yAxisID:"rain",
+order:1
 })
 
 chart.data.datasets.push({
 type:"line",
 data:point.temp,
 borderColor:"orange",
-yAxisID:"temp"
+yAxisID:"temp",
+order:2,
+borderWidth:2,
+pointRadius:3
 })
 
 chart.update()
